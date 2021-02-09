@@ -11,7 +11,7 @@ public class ScrollingPipe : ScrollingObstacle
     protected override void Awake()
     {
         base.Awake();
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     protected override void OnEnable()
