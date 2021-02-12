@@ -388,6 +388,7 @@ GameObject:
   - component: {fileID: 1356653121}
   - component: {fileID: 1356653120}
   - component: {fileID: 1356653119}
+  - component: {fileID: 1356653125}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Mario
@@ -404,10 +405,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1356653118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ed1035143389994abb06e417dc87d2f, type: 3}
+  m_Script: {fileID: 11500000, guid: a881a2d1cfbe419439f518ec37d3f9f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flyForce: {fileID: 11400000, guid: 82e16b0bcdcaf1f40867e3e62eae3413, type: 2}
+  flapForce: {fileID: 11400000, guid: 82e16b0bcdcaf1f40867e3e62eae3413, type: 2}
+  OnPlayerTap: {fileID: 11400000, guid: ef15fbf79eabedf45adcd36d2085b8de, type: 2}
 --- !u!114 &1356653120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,9 +419,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1356653118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efc4bd462c8d4fa429ad6bfa14206ce9, type: 3}
+  m_Script: {fileID: 11500000, guid: 99a0a511ca931b8469bf61cf97520af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerTap: {fileID: 11400000, guid: ef15fbf79eabedf45adcd36d2085b8de, type: 2}
+  OnPlayerLose: {fileID: 11400000, guid: 404a3e8005de62246807aa1e38790479, type: 2}
 --- !u!61 &1356653121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -532,6 +536,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1356653125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356653118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df284b208ceb13343a7e85b4c420c239, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerLose: {fileID: 11400000, guid: 404a3e8005de62246807aa1e38790479, type: 2}
 --- !u!1 &1361113089
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,7 +574,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361113089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.25, z: 0}
+  m_LocalPosition: {x: -0.5, y: 5.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1773240616}
@@ -598,7 +615,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1773240616}
-  - component: {fileID: 1773240617}
   m_Layer: 0
   m_Name: Obstacles
   m_TagString: Untagged
@@ -622,25 +638,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1773240617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1773240615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 287b22951d271974392ca379e334a683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pipesPrefab: {fileID: 215074937676501975, guid: 43db745f0539c884899f902c8b197e56,
-    type: 3}
-  pipesInPool: {fileID: 11400000, guid: 32656eb24badd934cb089550ea692fbe, type: 2}
-  spawnPositionX: {fileID: 11400000, guid: 49aad0f571ba5534e8e6db8711514995, type: 2}
-  spawnPositionY: {fileID: 11400000, guid: 19caa2304d4952040b0d39e6d84af936, type: 2}
-  spawnDelay: {fileID: 11400000, guid: 146c3b0902455634bb1e1d16ec382f02, type: 2}
-  spawnRate: {fileID: 11400000, guid: 28f3114ed81fc6048bb150c41087733f, type: 2}
 --- !u!1 &1798768921
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +651,6 @@ GameObject:
   - component: {fileID: 1798768926}
   - component: {fileID: 1798768924}
   - component: {fileID: 1798768927}
-  - component: {fileID: 1798768925}
   m_Layer: 0
   m_Name: Ground Obstacle
   m_TagString: Untagged
@@ -752,18 +748,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.64, y: 0.86}
   m_EdgeRadius: 0
---- !u!114 &1798768925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798768921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fde55730418c2d4b9390de61af4b9c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1798768926
 Rigidbody2D:
   serializedVersion: 4

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 215074937676501972}
   - component: {fileID: -2588389015034095179}
   - component: {fileID: -6417835977657775111}
-  - component: {fileID: 2358721421484867917}
   m_Layer: 0
   m_Name: Pipes
   m_TagString: Untagged
@@ -73,18 +72,6 @@ MonoBehaviour:
   spawnPositionY: {fileID: 11400000, guid: 19caa2304d4952040b0d39e6d84af936, type: 2}
   spawnRate: {fileID: 11400000, guid: 28f3114ed81fc6048bb150c41087733f, type: 2}
   pipesInPool: {fileID: 11400000, guid: 32656eb24badd934cb089550ea692fbe, type: 2}
---- !u!114 &2358721421484867917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215074937676501975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fde55730418c2d4b9390de61af4b9c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &215074937985689223
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,7 +172,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 1}
-    oldSize: {x: 0.62, y: 6}
+    oldSize: {x: 0.62, y: 7}
     newSize: {x: 0.62, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -294,7 +281,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 1}
-    oldSize: {x: 0.62, y: 6}
+    oldSize: {x: 0.62, y: 7}
     newSize: {x: 0.62, y: 6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
