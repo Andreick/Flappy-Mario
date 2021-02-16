@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ScriptableObjectModel
+namespace ScriptableObjectVariable
 {
     public abstract class ReadOnlyVariable<T> : ScriptableObject
     {

@@ -67,11 +67,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e226e5d138129a942b7daceb13263167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollingVelocity: {fileID: 11400000, guid: 191a131546ba6e140b73021ff9767c71, type: 2}
   spawnPositionX: {fileID: 11400000, guid: 49aad0f571ba5534e8e6db8711514995, type: 2}
   spawnPositionY: {fileID: 11400000, guid: 19caa2304d4952040b0d39e6d84af936, type: 2}
-  spawnRate: {fileID: 11400000, guid: 28f3114ed81fc6048bb150c41087733f, type: 2}
+  scrollingVelocity: {fileID: 11400000, guid: 191a131546ba6e140b73021ff9767c71, type: 2}
   pipesInPool: {fileID: 11400000, guid: 32656eb24badd934cb089550ea692fbe, type: 2}
+  spawnRate: {fileID: 11400000, guid: 28f3114ed81fc6048bb150c41087733f, type: 2}
+  OnPlayerLose: {fileID: 11400000, guid: 404a3e8005de62246807aa1e38790479, type: 2}
 --- !u!1 &215074937985689223
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,7 +99,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215074937985689223}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.875, z: 0}
+  m_LocalPosition: {x: 0, y: 0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 215074937676501972}
@@ -207,7 +208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215074938457208541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.875, z: 0}
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 215074937676501972}

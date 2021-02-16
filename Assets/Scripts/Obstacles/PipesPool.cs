@@ -3,36 +3,53 @@ using UnityEngine;
 
 public class PipesPool : MonoBehaviour
 {
-    [SerializeField] GameObject pipesPrefab;
-    [SerializeField] ReadOnlyIntVariable pipesInPool;
-    [SerializeField] ReadOnlyFloatVariable spawnPositionX;
-    [SerializeField] RandomInt spawnPositionY;
-    [SerializeField] ReadOnlyFloatVariable spawnDelay;
-    [SerializeField] ReadOnlyFloatVariable spawnRate;
+    [SerializeField] private GameObject pipesPrefab;
+    [SerializeField] private ReadOnlyIntVariable pipesInPool;
+    [SerializeField] private ReadOnlyFloatVariable spawnPositionX;
+    [SerializeField] private RandomInt spawnPositionY;
+    [SerializeField] private ReadOnlyFloatVariable spawnDelay;
+    [SerializeField] private ReadOnlyFloatVariable spawnRate;
+    [SerializeField] private ActionGameEvent OnPlayerLose;
 
     private GameObject[] pipes;
+    private Coroutine setPipes;
 
     private void Awake()
     {
         pipes = new GameObject[pipesInPool.Value];
 
+        Vector2 spawnPosition = new Vector2(spawnPositionX.Value, 0);
+
         for (int i = 0; i < pipes.Length; i++)
         {
-            pipes[i] = Instantiate(pipesPrefab, new Vector2(spawnPositionX.Value, spawnPositionY.Value), Quaternion.identity, transform);
+            spawnPosition.y = spawnPositionY.Value;
+            pipes[i] = Instantiate(pipesPrefab, spawnPosition, Quaternion.identity, transform);
         }
 
-        StartCoroutine(SetPipes());
+        setPipes = StartCoroutine(SetPipes());
     }
 
     private IEnumerator SetPipes()
     {
+        OnPlayerLose.Subscribe(Stop);
+
         yield return new WaitForSeconds(spawnDelay.Value);
 
-        foreach (GameObject pipe in pipes)
-        {
-            pipe.SetActive(true);
+        pipes[0].SetActive(true);
 
+        for (int i = 1; i < pipes.Length; i++)
+        {
             yield return new WaitForSeconds(spawnRate.Value);
+
+            pipes[i].SetActive(true);
         }
+
+        OnPlayerLose.Unsubscribe(Stop);
+    }
+
+    private void Stop()
+    {
+        Debug.Log("stop pipe spawn");
+        StopCoroutine(setPipes);
     }
 }

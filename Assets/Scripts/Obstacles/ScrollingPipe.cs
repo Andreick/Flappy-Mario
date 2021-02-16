@@ -1,41 +1,52 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class ScrollingPipe : ScrollingObstacle
+public class ScrollingPipe : MonoBehaviour
 {
-    [SerializeField] ReadOnlyFloatVariable spawnPositionX;
-    [SerializeField] RandomInt spawnPositionY;
-    [SerializeField] ReadOnlyFloatVariable spawnRate;
-    [SerializeField] ReadOnlyIntVariable pipesInPool;
+    [SerializeField] private RandomInt spawnPositionY;
+    [SerializeField] private ReadOnlyVector2Variable scrollingVelocity;
+    [SerializeField] private ReadOnlyIntVariable pipesInPool;
+    [SerializeField] private ReadOnlyFloatVariable spawnRate;
+    [SerializeField] private ActionGameEvent OnPlayerLose;
 
-    protected override void Awake()
+    private Rigidbody2D rigidbd2D;
+    private Coroutine resetPosition;
+
+    private void Awake()
     {
-        base.Awake();
+        rigidbd2D = GetComponent<Rigidbody2D>();
         gameObject.SetActive(false);
     }
 
-    protected override void OnEnable()
+    private void Start()
     {
-        base.OnEnable();
-        StartCoroutine(ResetPosition());
+        resetPosition = StartCoroutine(ResetPosition());
     }
 
     private IEnumerator ResetPosition()
     {
-        /*for ( ; ; )
+        OnPlayerLose.Subscribe(Stop);
+
+        float spawnTime = spawnRate.Value * pipesInPool.Value;
+        Vector2 spawnPosition = transform.position;
+
+        rigidbd2D.velocity = scrollingVelocity.Value;
+
+        for ( ; ; )
         {
-            yield return new WaitForSeconds(spawnRate.Value * pipesInPool.Value);
+            yield return new WaitForSeconds(spawnTime);
 
-            transform.position = new Vector2(spawnPositionX.Value, spawnPositionY.Value);
-        }*/
-
-        yield return new WaitForSeconds(spawnRate.Value * pipesInPool.Value);
-
-        while (this.enabled)
-        {
-            transform.position = new Vector2(spawnPositionX.Value, spawnPositionY.Value);
-
-            yield return new WaitForSeconds(spawnRate.Value * pipesInPool.Value);
+            spawnPosition.y = spawnPositionY.Value;
+            transform.position = spawnPosition;
         }
+    }
+
+    private void Stop()
+    {
+        Debug.Log("stop pipe");
+        StopCoroutine(resetPosition);
+        rigidbd2D.velocity = Vector2.zero;
+
+        OnPlayerLose.Unsubscribe(Stop);
     }
 }

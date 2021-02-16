@@ -5,7 +5,7 @@ public class TapFlap : MonoBehaviour
 {
     [SerializeField] private ReadOnlyVector2Variable flapForce;
     [SerializeField] private ActionGameEvent OnPlayerTap;
-    //[SerializeField] private ActionGameEvent OnPlayerLose;
+    [SerializeField] private ActionGameEvent OnPlayerLose;
 
     private Rigidbody2D rigidbd2D;
 
@@ -16,14 +16,14 @@ public class TapFlap : MonoBehaviour
 
     private void OnEnable()
     {
-        OnPlayerTap += Flap;
-        //OnPlayerLose += Die;
+        OnPlayerTap.Subscribe(Flap);
+        OnPlayerLose.Subscribe(Die);
     }
 
     private void OnDisable()
     {
-        OnPlayerTap -= Flap;
-        //OnPlayerLose -= Die;
+        OnPlayerTap.Unsubscribe(Flap);
+        OnPlayerLose.Unsubscribe(Die);
     }
 
     private void Flap()
@@ -35,7 +35,7 @@ public class TapFlap : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("die");
+        Debug.Log("player die");
         rigidbd2D.velocity = Vector2.zero;
         this.enabled = false;
     }

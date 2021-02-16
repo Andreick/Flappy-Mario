@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b3d261135fd12547b28a62fb2d8e152, type: 3}
   m_Name: SpawnPositionY
   m_EditorClassIdentifier: 
-  min: 3.125
-  max: -2.265
+  min: 2.75
+  max: -1.89

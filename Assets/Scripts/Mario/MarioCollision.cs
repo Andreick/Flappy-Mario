@@ -4,19 +4,14 @@ public class MarioCollision : MonoBehaviour
 {
     [SerializeField] private ActionGameEvent PlayerLose;
 
-    private void Awake()
+    private void Start()
     {
         if (!enabled) Destroy(this);
     }
 
-    private void OnDisable()
-    {
-        Destroy(this);
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("collision");
+        Debug.Log("player collision");
         PlayerLose.Trigger();
         Destroy(this);
     }

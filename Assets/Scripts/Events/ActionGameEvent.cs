@@ -11,15 +11,13 @@ public sealed class ActionGameEvent : ScriptableObject
         actionEvent?.Invoke();
     }
 
-    public static ActionGameEvent operator +(ActionGameEvent evt, Action sub)
+    public void Subscribe(Action subscriber)
     {
-        evt.actionEvent += sub;
-        return evt;
+        actionEvent += subscriber;
     }
 
-    public static ActionGameEvent operator -(ActionGameEvent evt, Action sub)
+    public void Unsubscribe(Action subscriber)
     {
-        evt.actionEvent -= sub;
-        return evt;
+        actionEvent -= subscriber;
     }
 }

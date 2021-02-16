@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName ="Variables/RandomInt")]
+[CreateAssetMenu(menuName = "Variables/RandomInt")]
 public class RandomInt : ScriptableObject
 {
     [SerializeField] private float min;

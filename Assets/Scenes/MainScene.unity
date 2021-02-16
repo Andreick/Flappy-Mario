@@ -410,6 +410,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flapForce: {fileID: 11400000, guid: 82e16b0bcdcaf1f40867e3e62eae3413, type: 2}
   OnPlayerTap: {fileID: 11400000, guid: ef15fbf79eabedf45adcd36d2085b8de, type: 2}
+  OnPlayerLose: {fileID: 11400000, guid: 404a3e8005de62246807aa1e38790479, type: 2}
 --- !u!114 &1356653120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,7 +471,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!212 &1356653123
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -530,7 +531,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356653118}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -574,7 +575,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361113089}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 5.25, z: 0}
+  m_LocalPosition: {x: -1, y: 5.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1773240616}
@@ -615,6 +616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1773240616}
+  - component: {fileID: 1773240617}
   m_Layer: 0
   m_Name: Obstacles
   m_TagString: Untagged
@@ -638,6 +640,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1773240617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773240615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 287b22951d271974392ca379e334a683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipesPrefab: {fileID: 215074937676501975, guid: 43db745f0539c884899f902c8b197e56,
+    type: 3}
+  pipesInPool: {fileID: 11400000, guid: 32656eb24badd934cb089550ea692fbe, type: 2}
+  spawnPositionX: {fileID: 11400000, guid: 49aad0f571ba5534e8e6db8711514995, type: 2}
+  spawnPositionY: {fileID: 11400000, guid: 19caa2304d4952040b0d39e6d84af936, type: 2}
+  spawnDelay: {fileID: 11400000, guid: 146c3b0902455634bb1e1d16ec382f02, type: 2}
+  spawnRate: {fileID: 11400000, guid: 28f3114ed81fc6048bb150c41087733f, type: 2}
+  OnPlayerLose: {fileID: 11400000, guid: 404a3e8005de62246807aa1e38790479, type: 2}
 --- !u!1 &1798768921
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,3 +804,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollingVelocity: {fileID: 11400000, guid: 191a131546ba6e140b73021ff9767c71, type: 2}
+  OnPlayerLose: {fileID: 11400000, guid: 404a3e8005de62246807aa1e38790479, type: 2}

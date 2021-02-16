@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
 
     private void OnEnable()
     {
-        OnPlayerLose += Die;
+        OnPlayerLose.Subscribe(Die);
     }
 
     private void Update()
@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
 
     private void OnDisable()
     {
-        OnPlayerLose -= Die;
+        OnPlayerLose.Unsubscribe(Die);
     }
 
     private void Die()
